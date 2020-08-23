@@ -1,7 +1,6 @@
 VERSION=v2.4
 
-#prefix=/usr/local
-prefix=./arm
+prefix=../install
 CROSS_COMPILE=arm-himix200-linux-
 incdir=$(prefix)/include/librtmp
 bindir=$(prefix)/bin
@@ -31,7 +30,7 @@ LIBS_posix=
 LIBS_darwin=
 LIBS_mingw=-lws2_32 -lwinmm -lgdi32
 LIB_GNUTLS=-lgnutls -lhogweed -lnettle -lgmp $(LIBZ)
-LIB_OPENSSL=-lssl -lcrypto $(LIBZ) -L../openssl-1.0.1p/arm/lib -L../zlib-1.2.8/arm/lib
+LIB_OPENSSL=-lssl -lcrypto $(LIBZ) -L../install/lib
 LIB_POLARSSL=-lpolarssl $(LIBZ)
 PRIVATE_LIBS=$(LIBS_$(SYS))
 CRYPTO_LIB=$(LIB_$(CRYPTO)) $(PRIVATE_LIBS)
@@ -75,7 +74,7 @@ SO_INST=$(SOINST_$(SHARED))
 
 DEF=-DRTMPDUMP_VERSION=\"$(VERSION)\" $(CRYPTO_DEF) $(XDEF)
 OPT=-O2
-CFLAGS=-Wall $(XCFLAGS) $(INC) $(DEF) $(OPT) $(SO_DEF) -I../openssl-1.0.1p/arm/include -I../zlib-1.2.8/arm/include
+CFLAGS=-Wall $(XCFLAGS) $(INC) $(DEF) $(OPT) $(SO_DEF) -I../install/include
 LDFLAGS=$(XLDFLAGS)
 
 
