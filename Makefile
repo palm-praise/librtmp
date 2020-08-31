@@ -11,6 +11,10 @@ INCDIR=$(DESTDIR)$(incdir)
 LIBDIR=$(DESTDIR)$(libdir)
 MANDIR=$(DESTDIR)$(mandir)
 
+# added
+INC=-I../install/include
+XLDFLAGS=-L../install/lib
+
 CC=$(CROSS_COMPILE)gcc
 LD=$(CROSS_COMPILE)ld
 AR=$(CROSS_COMPILE)ar
@@ -110,7 +114,7 @@ install:	install_base $(SO_INST)
 
 install_base:	librtmp.a librtmp.pc
 	-mkdir -p $(INCDIR) $(LIBDIR)/pkgconfig $(MANDIR)/man3 $(SODIR)
-	cp amf.h http.h log.h rtmp.h $(INCDIR)
+	cp amf.h http.h log.h rtmp.h rtmp_sys.h $(INCDIR)
 	cp librtmp.a $(LIBDIR)
 	cp librtmp.pc $(LIBDIR)/pkgconfig
 	cp librtmp.3 $(MANDIR)/man3
